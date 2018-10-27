@@ -1,0 +1,4 @@
+node_modules
+.Rhistory
+config.json
+.idea
