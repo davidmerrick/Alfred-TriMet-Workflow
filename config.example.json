@@ -1,0 +1,10 @@
+{
+    "trimetApiKey" : "your API key here",
+    "stops" : [
+        {
+        	"label": "Bus home",
+            "stopId": 10791,
+            "busId": 20
+        }
+    ]
+}
