@@ -7,7 +7,18 @@
 	<key>connections</key>
 	<dict>
 		<key>EA002E52-08F7-44C3-8BD5-017303CC498A</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>34C9D83F-0D4C-4EEB-AA6E-A99FC4A1E70D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>David Merrick</string>
@@ -16,9 +27,28 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Trimet JS</string>
+	<string>Trimet</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>34C9D83F-0D4C-4EEB-AA6E-A99FC4A1E70D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -33,7 +63,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>nb</string>
+				<string>bus</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -45,7 +75,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>/Users/davidmerrick/.nvm/versions/node/v11.0.0/bin/node --experimental-modules index.mjs</string>
+				<string>./node_modules/.bin/run-node index.js</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -71,12 +101,19 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>34C9D83F-0D4C-4EEB-AA6E-A99FC4A1E70D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>390</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
 		<key>EA002E52-08F7-44C3-8BD5-017303CC498A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>150</integer>
+			<integer>80</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>100</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
