@@ -8,10 +8,9 @@ Pressing ↵ on either of these options will take you to the [Transit Tracker](h
 
 # Configuration
 
-First, get an API key from [here](https://developer.trimet.org/appid/registration/).
-
-Copy the `config.example.json` file to `config.json`. Add your API key in the `trimetApiKey` field.
-
-Finally, configure the bus stops you're interested in, and add custom labels for them. Invoke this workflow by typing, `bus`.
+1. Get an API key from [here](https://developer.trimet.org/appid/registration/).
+2. Copy the `config.example.json` file to `config.json`. Add your API key in the `trimetApiKey` field.
+3. Run `npm install` to install dependencies.
+4. Configure the bus stops you're interested in, and add custom labels for them. Invoke this workflow by typing, `bus`.
 
 Happy commuting!
