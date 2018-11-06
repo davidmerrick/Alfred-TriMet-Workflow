@@ -19,8 +19,10 @@ Or:
 
 # Configuration
 
+
 1. Get an API key from [here](https://developer.trimet.org/appid/registration/).
 2. Copy the `config.example.json` file to `config.json`. Add your API key in the `trimetApiKey` field.
 3. Configure the bus stops you're interested in, and add custom labels for them. Invoke this workflow by typing, `bus`.
+4. Optionally, you can add an `offset` integer field to a stop. This value will be added to the arrival time. This allows you, for example, to factor in the amount of time to walk to the bus stop.
 
 Happy commuting!

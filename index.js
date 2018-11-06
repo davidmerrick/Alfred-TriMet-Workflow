@@ -11,24 +11,35 @@ fs.readFile(CONFIG_FILE, 'utf8', (err, data) => {
 	let stops = config.stops;
 
 	let promises = stops.map(stop => 
-		fetch("https://developer.trimet.org/ws/V1/arrivals?json=true&locIDs=" + stop.stopId + "&appID=" + config.trimetApiKey)
-			.then(response => response.json())
-			.then(json => {
-				let arrivals = json.resultSet.arrival;
-				arrivals.sort((a, b) => getNextArrivalTime(a) - getNextArrivalTime(b));
-				let nextArrival = arrivals.filter(a => a.route == stop.busId)[0];
-				return {
-					title: stop.label,
-					subtitle: "Bus " + stop.busId + ": " + getMinutesFromNow(getNextArrivalTime(nextArrival)) + " min",
-					arg: "https://trimet.org/#tracker/stop/" + stop.stopId
-				}
-			})
-	);
+        fetch("https://developer.trimet.org/ws/V1/arrivals?json=true&locIDs=" + stop.stopId + "&appID=" + config.trimetApiKey)
+            .then(response => response.json())
+            .then(json => {
+                let arrivals = json.resultSet.arrival;
+                arrivals.sort((a, b) => getNextArrivalTime(a) - getNextArrivalTime(b));
+                return arrivals.filter(a => a.route == stop.busId)
+                               .map(a => formatArrival(a, stop));
+                
+            })
+    );
 
 	Promise.all(promises).then(results => {
-		alfy.output(results);
+		// flatMap output
+        let output = results.reduce((a, b) => a.concat(b)); 
+        alfy.output(output);
 	});
 });
+
+function formatArrival(arrival, stop) {
+    let minsFromNow = getMinutesFromNow(getNextArrivalTime(arrival));
+    if (stop.hasOwnProperty('offset')) {
+        minsFromNow += stop.offset;
+    }
+    return {
+        title: stop.label,
+        subtitle: "Bus " + stop.busId + ": " + minsFromNow + " min",
+        arg: "https://trimet.org/#tracker/stop/" + stop.stopId
+    }
+}
 
 function getNextArrivalTime(arrival){
 	// estimated is more accurate. Prioritize that if it's present.
